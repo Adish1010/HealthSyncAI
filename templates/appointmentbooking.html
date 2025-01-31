@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/appointmentbooking.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+    <button onclick="goBack()" class="back-btn">← Back to Chatbot</button>
+    <h1>Book an Appointment</h1>
+</header>
+
+
+        <!-- Available Doctors List -->
+        <div class="doctor-list">
+            <h2>Available Doctors</h2>
+            <div id="doctor-selection" class="doctor-cards">
+                <!-- Dynamic doctor list will go here -->
+            </div>
+        </div>
+
+        <!-- Date and Time Selection -->
+        <div class="appointment-form">
+            <h2>Select Appointment Details</h2>
+
+            <label for="doctor">Choose Doctor:</label>
+            <select id="doctor" required>
+                <option value="" disabled selected>Select a doctor</option>
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Select Time Slot:</label>
+            <select id="time" required>
+                <option value="" disabled selected>Select a time slot</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+            </select>
+
+            <button onclick="bookAppointment()">Book Appointment</button>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h2>Confirm Your Appointment</h2>
+                <div id="confirmation-details">
+                    <!-- Booking details will go here -->
+                </div>
+                <button onclick="confirmBooking()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/appointmentbooking.js') }}"></script>
+</body>
+</html>

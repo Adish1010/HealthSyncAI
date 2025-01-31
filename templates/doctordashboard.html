@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctordashboard.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Welcome, <span id="doctor-name">{{ doctor_name }}</span></h2>
+        </div>
+        <ul class="nav">
+            <li><a href="#" id="view-details">View Details</a></li>
+            <li><a href="{{ url_for('home') }}" id="signout-btn">Sign Out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="main-content">
+        <h1>Doctor Dashboard</h1>
+        <h2>Upcoming Appointments</h2>
+        <div id="appointments-container">
+            <table id="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Appointment Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="appointments-list">
+                    <!-- Rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Patient Details Modal -->
+    <div id="patient-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Patient Details</h2>
+            <div id="patient-details">
+                <!-- Patient details will be dynamically inserted here -->
+            </div>
+            <h3>Consultation</h3>
+            <textarea id="diagnosis-input" placeholder="Enter Diagnosis here..."></textarea>
+            <textarea id="symptoms-input" placeholder="Enter Symptoms here..."></textarea>
+            <button id="save-diagnosis-btn">Save Diagnosis</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/doctordashboard.js') }}"></script>
+</body>
+</html>

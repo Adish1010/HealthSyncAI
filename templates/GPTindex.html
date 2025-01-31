@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Diagnostic Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/GPTstyles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="brand">Health Guard</a>
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item"><a href="{{ url_for('home') }}" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="#features" class="menu-link">Features</a></li>
+                    <li class="menu-item"><a href="#pricing" class="menu-link">Pricing</a></li>
+                    <li class="menu-item"><a href="#support" class="menu-link">Support</a></li>
+                </ul>
+            </div>
+            <div class="burger" id="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </nav>
+        <div class="main-screen"> 
+            <section class="hero">
+                <h1 class="hero-message">
+                    AI Health Diagnostic Chatbot
+                </h1>
+                <p class="under-hero">
+                    Your personal health assistant. Get preliminary diagnoses, recommendations, and doctor consultations all in one place.
+                </p>
+                <div class="button-list">
+                    <a href="{{ url_for('login') }}" class="primary">Login</a>
+                    <a href="{{ url_for('signin') }}" class="signup">Sign Up</a>
+                </div>
+            </section>
+            <picture class="promo-art">
+                <img src="{{ url_for('static', filename='images/health-ai-image.jpg') }}" alt="AI Image">
+            </picture>
+        </div>
+    </header>
+</body>
+</html>

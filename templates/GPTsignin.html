@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/GPTsignin.css') }}">
+</head>
+<body>
+    <div class="signup-box">
+        <p>Sign Up</p>
+        <form>
+            <div class="user-box">
+                <input required name="name" type="text">
+                <label>Full Name</label>
+            </div>
+            <div class="user-box">
+                <input required name="email" type="email">
+                <label>Email</label>
+            </div>
+            <div class="user-box">
+                <input required name="password" type="password">
+                <label>Password</label>
+            </div>
+            <div class="user-box">
+                <input required name="confirm-password" type="password">
+                <label>Confirm Password</label>
+            </div>
+            <div class="role-box">
+                <label for="role">Select Role:</label>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Choose a role</option>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                </select>
+            </div>
+            <!-- <a href="../login/GPTlogin.html" id="register-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+            </a> -->
+            <button type="submit" id="register-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+            </button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}" class="a75">Log in!</a></p>
+    </div>
+    <script src="{{ url_for('static', filename='js/signinscript.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #272727;
+}
+
+.signup-box {
+    position: relative;
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.9);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-box p:first-child {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.signup-box .user-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.signup-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+}
+
+.signup-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.signup-box .user-box input:focus ~ label,
+.signup-box .user-box input:valid ~ label {
+    top: -20px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.signup-box .role-box {
+    margin: 20px 0;
+    text-align: left;
+    color: #fff;
+}
+
+.signup-box .role-box label {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.signup-box .role-box select {
+    width: 100%;
+    padding: 10px;
+    background: #333; /* Dark background for dropdown */
+    color: #fff; /* Light text for visibility */
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.signup-box .role-box select option {
+    background: #333; /* Same as dropdown background */
+    color: #fff; /* Same as dropdown text color */
+}
+
+.signup-box a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 3px;
+}
+
+.signup-box a:hover {
+    background: #fff;
+    color: #272727;
+    border-radius: 5px;
+}
+.signup-box p:last-child {
+    color: #fff; /* Ensure the text is visible */
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.signup-box p:last-child a {
+    color: #fff;
+    
+}
+
+.signup-box p:last-child a:hover {
+    color: #aaa; /* Light gray when hovered */
+}
+
+/* Register Button Styling */
+.signup-box a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    border: none;
+    background-color: transparent;
+}
+
+.signup-box a:hover {
+    background: #fff;
+    color: #272727;
+    border-radius: 5px;
+}
+
+/* Style for the Register button to match Submit button in login page */
+.signup-box a, .signup-box button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.signup-box a:hover, .signup-box button:hover {
+    background: #fff;
+    color: #272727;
+    border-radius: 5px;
+}
+
+/* Animation for hover effect */
+.signup-box a span, .signup-box button span {
+    position: absolute;
+    display: block;
+}
+
+.signup-box a span:nth-child(1), .signup-box button span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff);
+    animation: btn-anim1 1.5s linear infinite;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+.signup-box a span:nth-child(2), .signup-box button span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #fff);
+    animation: btn-anim2 1.5s linear infinite;
+    animation-delay: 0.375s;
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+
+.signup-box a span:nth-child(3), .signup-box button span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #fff);
+    animation: btn-anim3 1.5s linear infinite;
+    animation-delay: 0.75s;
+}
+
+@keyframes btn-anim3 {
+    0% {
+        right: -100%;
+    }
+    50%, 100% {
+        right: 100%;
+    }
+}
+
+.signup-box a span:nth-child(4), .signup-box button span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #fff);
+    animation: btn-anim4 1.5s linear infinite;
+    animation-delay: 1.125s;
+}
+
+@keyframes btn-anim4 {
+    0% {
+        bottom: -100%;
+    }
+    50%, 100% {
+        bottom: 100%;
+    }
+}

@@ -1,0 +1,175 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--gray-1);
+    color: var(--gray-9);
+}
+
+.main-screen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--size-10);
+    gap: var(--size-6);
+}
+
+/* Header */
+.header {
+    width: 100%;
+    background: var(--grape-0);
+    padding: var(--size-5);
+    box-shadow: var(--shadow-2);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--size-2) 0;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--indigo-8);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-inner {
+    display: flex;
+    list-style: none;
+    gap: var(--size-4);
+    margin: 0;
+    padding: 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: var(--gray-9);
+    font-size: var(--font-size-2);
+    padding: var(--size-2);
+    transition: color 0.3s;
+}
+
+.menu-link:hover {
+    color: var(--indigo-8);
+}
+
+/* Burger Menu */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--gray-9);
+    margin: 4px 0;
+}
+
+/* Show menu on smaller screens */
+@media only screen and (max-width: 768px) {
+    .menu-inner {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--grape-0);
+        width: 100%;
+        text-align: center;
+        padding: var(--size-4);
+    }
+
+    .menu.is-active .menu-inner {
+        display: flex;
+    }
+
+    .burger {
+        display: flex;
+    }
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    padding: var(--size-10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--size-5);
+}
+
+.hero-message {
+    font-size: var(--font-size-7);
+    font-weight: bold;
+    color: var(--indigo-8);
+}
+
+.under-hero {
+    color: var(--gray-7);
+    font-size: var(--font-size-4);
+    margin-block-end: var(--size-3);
+}
+
+.button-list {
+    display: flex;
+    gap: var(--size-4);
+}
+
+a.signup, a.primary {
+    font-size: var(--font-size-3);
+    padding-inline: var(--size-8);
+    padding-block: var(--size-3);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.signup {
+    background: white;
+    color: var(--indigo-8);
+}
+
+a.signup:hover {
+    background: var(--indigo-8);
+    color: white;
+    transform: translateY(-2px);
+}
+
+a.primary {
+    background: var(--indigo-8);
+    color: white;
+}
+
+a.primary:hover {
+    background: var(--indigo-7);
+    transform: translateY(-2px);
+}
+
+/* Promo Art */
+.promo-art {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-art > img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-2);
+}
