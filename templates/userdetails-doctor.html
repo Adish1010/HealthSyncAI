@@ -1,76 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Details - AI Health Chatbot</title>
-    <link rel="stylesheet" href="../styles.css"> <!-- Assuming you're using a global stylesheet -->
+{% extends "base.html" %}
+
+{% block title %}Doctor Details - Health Guard{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userdetails.css') }}">
-</head>
-<body>
+{% endblock %}
 
-    <!-- Header Section -->
-    <header>
-        <h1>AI Health Chatbot</h1>
-    </header>
+{% block content %}
+    <div class="form-container">
+        <h2>Doctor Details</h2>
+        <form id="doctor-details-form">
+            <input type="hidden" id="user-email" value="{{ session.get('email') }}">
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
 
-    <!-- Main Content Section -->
-    <main>
-        <div class="form-container">
-            <h2>Doctor Details</h2>
-            <form id="doctor-details-form">
-                <div class="input-group">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" required>
-                </div>
+            <div class="form-group">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="specialization">Specialization</label>
-                    <input type="text" id="specialization" name="specialization" required>
-                </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="contact">Contact Number</label>
-                    <input type="text" id="contact" name="contact" required>
-                </div>
+            <div class="form-group">
+                <label for="license_number">License Number:</label>
+                <input type="text" id="license_number" name="license_number" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="license_number">Medical License Number</label>
-                    <input type="text" id="license_number" name="license_number" required>
-                </div>
+            <div class="form-group">
+                <label for="hospital_name">Hospital Name:</label>
+                <input type="text" id="hospital_name" name="hospital_name" required>
+            </div>
 
-                <!-- New fields -->
-                <div class="input-group">
-                    <label for="hospital_name">Hospital Name</label>
-                    <input type="text" id="hospital_name" name="hospital_name" required>
-                </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="location">Hospital Location</label>
-                    <input type="text" id="location" name="location" required>
-                </div>
+            <div class="form-group">
+                <label for="experience">Experience (Years):</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="experience">Years of Experience</label>
-                    <input type="number" id="experience" name="experience" required min="0">
-                </div>
+            <div class="form-group">
+                <label for="consultation_fees">Consultation Fees:</label>
+                <input type="number" id="consultation_fees" name="consultation_fees" step="0.01" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="consultation_fees">Consultation Fees (in INR)</label>
-                    <input type="number" id="consultation_fees" name="consultation_fees" required min="0">
-                </div>
+            <div class="form-group">
+                <label for="available_timings">Available Timings:</label>
+                <input type="text" id="available_timings" name="available_timings" placeholder="e.g., Mon-Fri, 9 AM - 5 PM" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="available_timings">Available Timings</label>
-                    <input type="text" id="available_timings" name="available_timings" required>
-                </div>
-                <input type="hidden" name="email" value="{{ session.get('email', '') }}">
+            <button type="submit" id="submit-btn">Submit</button>
+            <div id="message-display" class="message" style="display: none;"></div>
+        </form>
+    </div>
+{% endblock %}
 
-                <button type="submit" id="submit-btn">Submit</button>
-            </form>
-        </div>
-    </main>
-
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/userdetailsscript.js') }}"></script>
-</body>
-</html>
+{% endblock %}

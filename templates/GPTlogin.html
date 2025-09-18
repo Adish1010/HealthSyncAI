@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+{% extends "base.html" %}
+
+{% block title %}Login - Health Guard{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/GPTlogin.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="login-box">
         <p>Login</p>
         <form id="loginForm">
-            <div class="user-box">
-                <input required name="email" type="text" id="email">
-                <label>Email</label>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email" required>
             </div>
-            <div class="user-box">
-                <input required name="password" type="password" id="password">
-                <label>Password</label>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-            <div class="role-box">
-                <label for="role">Select Role:</label>
-                <select id="role" name="role" required>
-                    <option value="" disabled selected>Choose a role</option>
+            <div class="input-group">
+                <select id="role" required>
+                    <option value="">Select Role</option>
                     <option value="patient">Patient</option>
                     <option value="doctor">Doctor</option>
                 </select>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn">Login</button>
+            <div id="error-message" class="error-message"></div>
+            <div class="bottom-text">
+                <p>Don't have an account? <a href="/signin">Sign In</a></p>
+            </div>
         </form>
-        <p>Don't have an account? <a href="{{ url_for('signin') }}" class="a75">Sign up!</a></p>
     </div>
+{% endblock %}
+
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
-</body>
-</html>
+{% endblock %}

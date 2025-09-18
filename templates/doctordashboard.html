@@ -1,62 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctordashboard.css') }}">
-</head>
-<body>
-    <!-- Sidebar Navigation -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h2>Welcome, <span id="doctor-name">{{ doctor_name }}</span></h2>
-        </div>
-        <ul class="nav">
-            <li><a href="#" id="view-details">View Details</a></li>
-            <li><a href="{{ url_for('home') }}" id="signout-btn">Sign Out</a></li>
-        </ul>
-    </div>
+{% extends "base.html" %}
 
-    <!-- Main Dashboard Content -->
+{% block title %}Doctor Dashboard - Health Guard{% endblock %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctordashboard.css') }}">
+{% endblock %}
+
+{% block content %}
     <div class="main-content">
-        <h1>Doctor Dashboard</h1>
-        <h2>Upcoming Appointments</h2>
+        <h1>Welcome, Dr. {{ doctor_name }}!</h1>
+
         <div id="appointments-container">
+            <h2>Your Appointments</h2>
             <table id="appointments-table">
                 <thead>
                     <tr>
                         <th>Patient Name</th>
                         <th>Age</th>
                         <th>Gender</th>
-                        <th>Appointment Date</th>
+                        <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="appointments-list">
-                    <!-- Rows will be dynamically populated here -->
+                    <!-- Appointments will be loaded here by JavaScript -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Patient Details Modal -->
+    <!-- Modal for Adding Diagnosis -->
     <div id="patient-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Patient Details</h2>
-            <div id="patient-details">
-                <!-- Patient details will be dynamically inserted here -->
-            </div>
-            <h3>Consultation</h3>
-            <textarea id="diagnosis-input" placeholder="Enter Diagnosis here..."></textarea>
-            <textarea id="symptoms-input" placeholder="Enter Symptoms here..."></textarea>
+            <h3>Add Consultation Notes</h3>
+            <textarea id="symptoms-input" placeholder="Enter symptoms" rows="4" required></textarea>
+            <textarea id="diagnosis-input" placeholder="Enter diagnosis" rows="4" required></textarea>
+            <div id="modal-error-message" class="error-message" style="display: none;"></div>
             <button id="save-diagnosis-btn">Save Diagnosis</button>
         </div>
     </div>
+{% endblock %}
 
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/doctordashboard.js') }}"></script>
-</body>
-</html>
+{% endblock %}

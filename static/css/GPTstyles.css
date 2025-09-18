@@ -173,3 +173,32 @@ a.primary:hover {
     border-radius: var(--radius-3);
     box-shadow: var(--shadow-2);
 }
+
+/* Message Display Styles */
+.message {
+    padding: var(--size-3);
+    margin-top: var(--size-4);
+    border-radius: var(--radius-2);
+    font-size: var(--font-size-2);
+    text-align: center;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: var(--green-1);
+    color: var(--green-8);
+    border: 1px solid var(--green-6);
+}
+
+.message.error {
+    background-color: var(--red-1);
+    color: var(--red-8);
+    border: 1px solid var(--red-6);
+}
+
+.error-message {
+    color: var(--red-8);
+    font-size: var(--font-size-1);
+    margin-top: var(--size-2);
+    text-align: center;
+}

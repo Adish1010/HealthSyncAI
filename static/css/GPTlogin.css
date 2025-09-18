@@ -4,284 +4,106 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #272727;
+    font-family: var(--font-sans);
+    background-color: var(--gray-1);
 }
   
 .login-box {
     position: relative;
     width: 400px;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.9);
+    padding: var(--size-9);
+    background: var(--gray-0);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    box-shadow: var(--shadow-4);
+    border-radius: var(--radius-3);
     text-align: center;
 }
   
 .login-box p:first-child {
-    margin: 0 0 30px;
-    color: #fff;
-    font-size: 1.5rem;
+    margin: 0 0 var(--size-6);
+    color: var(--gray-9);
+    font-size: var(--font-size-4);
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: var(--font-letter-spacing-1);
 }
   
-.login-box .user-box {
+.login-box .input-group {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: var(--size-6);
 }
   
-.login-box .user-box input {
+.login-box .input-group input, .login-box .input-group select {
     width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
+    padding: var(--size-3) 0;
+    font-size: var(--font-size-3);
+    color: var(--gray-9);
     background: transparent;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--gray-5);
     outline: none;
 }
   
-.login-box .user-box label {
+.login-box .input-group label {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
+    padding: var(--size-3) 0;
+    font-size: var(--font-size-3);
+    color: var(--gray-7);
     pointer-events: none;
     transition: 0.5s;
 }
   
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .input-group input:focus ~ label,
+.login-box .input-group input:valid ~ label {
     top: -20px;
-    font-size: 12px;
-    color: #fff;
+    font-size: var(--font-size-1);
+    color: var(--indigo-8);
 }
-  
-.login-box a {
+
+.login-box .input-group select {
+    color: var(--gray-7);
+}
+
+.login-box .input-group select option {
+    background: var(--gray-0);
+    color: var(--gray-9);
+}
+
+.login-box .btn {
     position: relative;
     display: inline-block;
-    padding: 10px 20px;
+    padding: var(--size-3) var(--size-5);
     font-weight: bold;
-    color: #fff;
-    font-size: 16px;
+    color: var(--indigo-8);
+    font-size: var(--font-size-3);
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
     transition: 0.5s;
-    margin-top: 40px;
-    letter-spacing: 3px;
-}
-  
-.login-box a:hover {
-    background: #fff;
-    color: #272727;
-    border-radius: 5px;
-}
-  
-.login-box a span {
-    position: absolute;
-    display: block;
-}
-  
-.login-box a span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #fff);
-    animation: btn-anim1 1.5s linear infinite;
-}
-  
-@keyframes btn-anim1 {
-    0% { left: -100%; }
-    50%, 100% { left: 100%; }
-}
-  
-.login-box a span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #fff);
-    animation: btn-anim2 1.5s linear infinite;
-    animation-delay: 0.375s;
-}
-  
-@keyframes btn-anim2 {
-    0% { top: -100%; }
-    50%, 100% { top: 100%; }
-}
-  
-.login-box a span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #fff);
-    animation: btn-anim3 1.5s linear infinite;
-    animation-delay: 0.75s;
-}
-  
-@keyframes btn-anim3 {
-    0% { right: -100%; }
-    50%, 100% { right: 100%; }
-}
-  
-.login-box a span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #fff);
-    animation: btn-anim4 1.5s linear infinite;
-    animation-delay: 1.125s;
-}
-  
-@keyframes btn-anim4 {
-    0% { bottom: -100%; }
-    50%, 100% { bottom: 100%; }
-}
-  
-.login-box p:last-child {
-    color: #aaa;
-}
-.role-box {
-    margin: 20px 0;
-    text-align: left;
-    color: #fff;
-}
-
-.role-box label {
-    font-size: 14px;
-    color: #aaa;
-}
-
-.role-box select {
-    width: 100%;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    font-size: 14px;
-    outline: none;
-    appearance: none;
+    margin-top: var(--size-8);
+    letter-spacing: var(--font-letter-spacing-2);
+    border: 1px solid var(--indigo-8);
+    background-color: transparent;
     cursor: pointer;
 }
 
-.role-box select:focus {
-    border-color: #ccc;
+.login-box .btn:hover {
+    background: var(--indigo-8);
+    color: var(--gray-0);
+    border-radius: var(--radius-2);
 }
 
-.role-box select option {
-    background: #333; /* Same as dropdown background */
-    color: #fff; /* Same as dropdown text color */
+.login-box .bottom-text p {
+    color: var(--gray-7);
+    font-size: var(--font-size-2);
 }
-/* Submit Button Styling */
-button[type="submit"] {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    font-weight: bold;
-    color: #fff;
-    font-size: 16px;
+
+.login-box .bottom-text a {
+    color: var(--indigo-8);
     text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: 0.5s;
-    margin-top: 40px;
-    letter-spacing: 3px;
-    border: none;
-    background-color: transparent;
 }
 
-button[type="submit"]:hover {
-    background: #fff;
-    color: #272727;
-    border-radius: 5px;
-}
-
-/* Button Animations */
-button[type="submit"] span {
-    position: absolute;
-    display: block;
-}
-
-button[type="submit"] span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #fff);
-    animation: btn-anim1 1.5s linear infinite;
-}
-
-@keyframes btn-anim1 {
-    0% {
-        left: -100%;
-    }
-    50%, 100% {
-        left: 100%;
-    }
-}
-
-button[type="submit"] span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #fff);
-    animation: btn-anim2 1.5s linear infinite;
-    animation-delay: 0.375s;
-}
-
-@keyframes btn-anim2 {
-    0% {
-        top: -100%;
-    }
-    50%, 100% {
-        top: 100%;
-    }
-}
-
-button[type="submit"] span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #fff);
-    animation: btn-anim3 1.5s linear infinite;
-    animation-delay: 0.75s;
-}
-
-@keyframes btn-anim3 {
-    0% {
-        right: -100%;
-    }
-    50%, 100% {
-        right: 100%;
-    }
-}
-
-button[type="submit"] span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #fff);
-    animation: btn-anim4 1.5s linear infinite;
-    animation-delay: 1.125s;
-}
-
-@keyframes btn-anim4 {
-    0% {
-        bottom: -100%;
-    }
-    50%, 100% {
-        bottom: 100%;
-    }
+.login-box .bottom-text a:hover {
+    text-decoration: underline;
 }

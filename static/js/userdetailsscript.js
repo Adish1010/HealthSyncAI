@@ -1,80 +1,102 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const submitButton = document.getElementById('submit-btn');
+    const messageDiv = document.getElementById('message-display'); // General message display div
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form from submitting normally
+    const displayMessage = (message, type) => {
+        if (messageDiv) {
+            messageDiv.textContent = message;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    };
 
-        // Collect form data
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        if (messageDiv) {
+            messageDiv.style.display = 'none'; // Clear previous messages
+        }
+
         const formData = new FormData(form);
         const userDetails = {};
         formData.forEach((value, key) => {
             userDetails[key] = value;
         });
 
+        // Add email from hidden input
+        const emailInput = document.getElementById('user-email');
+        if (emailInput) {
+            userDetails.email = emailInput.value;
+        }
+
         // Perform validation for patient details form
         if (form.id === 'patient-details-form') {
             const age = userDetails.age;
-            if (!userDetails.full_name || !age || !userDetails.gender || !userDetails.contact || !userDetails.location) {
-                alert('Please fill all the fields.');
+            if (!userDetails.full_name || !age || !userDetails.gender || !userDetails.contact || !userDetails.location || !userDetails.email) {
+                displayMessage('Please fill all the fields.', 'error');
                 return;
             }
 
             if (isNaN(age) || age <= 0 || age > 120) {
-                alert('Please enter a valid age.');
+                displayMessage('Please enter a valid age.', 'error');
                 return;
             }
 
-            // Send patient details to the backend
-            fetch('/submit-patient-details', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userDetails) // Send the collected user details as JSON
-            })
-            .then(response => {
+            try {
+                const response = await fetch('/submit-patient-details', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userDetails)
+                });
+
+                const result = await response.json();
                 if (response.ok) {
-                    alert('Patient details submitted successfully.');
-                    window.location.href = '/chatbot'; // Redirect to chatbot for patients
+                    displayMessage(result.message || 'Patient details submitted successfully.', 'success');
+                    window.location.href = '/chatbot';
                 } else {
-                    alert('Failed to submit patient details.');
+                    displayMessage(result.error || 'Failed to submit patient details.', 'error');
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred while submitting patient details.');
-            });
+                displayMessage('An error occurred while submitting patient details.', 'error');
+            }
         }
 
         // Perform validation for doctor details form
         if (form.id === 'doctor-details-form') {
-            const hospitalName = userDetails['hospital_name'];
-            if (!userDetails.full_name || !userDetails.specialization || !userDetails.contact || !userDetails.license_number || !hospitalName || !userDetails.location || !userDetails.experience || !userDetails.consultation_fees || !userDetails.available_timings) {
-                alert('Please fill all the fields.');
+            const { full_name, specialization, contact, license_number, hospital_name, location, experience, consultation_fees, available_timings, email } = userDetails;
+
+            if (!full_name || !specialization || !contact || !license_number || !hospital_name || !location || !experience || !consultation_fees || !available_timings || !email) {
+                displayMessage('Please fill all the fields.', 'error');
                 return;
             }
 
-            // Send doctor details to the backend
-            fetch('/submit-doctor-details', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userDetails) // Send the collected user details as JSON
-            })
-            .then(response => {
+            try {
+                const response = await fetch('/submit-doctor-details', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userDetails)
+                });
+
+                const result = await response.json();
                 if (response.ok) {
-                    alert('Doctor details submitted successfully.');
-                    window.location.href = '/doctordashboard'; // Redirect to doctor dashboard
+                    displayMessage(result.message || 'Doctor details submitted successfully.', 'success');
+                    window.location.href = '/doctordashboard';
                 } else {
-                    alert('Failed to submit doctor details.');
+                    displayMessage(result.error || 'Failed to submit doctor details.', 'error');
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred while submitting doctor details.');
-            });
+                displayMessage('An error occurred while submitting doctor details.', 'error');
+            }
         }
     });
 });

@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("patient-modal");
     const closeModalBtn = document.querySelector(".close-btn");
     const saveDiagnosisBtn = document.getElementById("save-diagnosis-btn");
-    //const modalPatientName = document.getElementById("modal-patient-name");
     const symptomsInput = document.getElementById("symptoms-input");
     const diagnosisInput = document.getElementById("diagnosis-input");
+    const modalErrorMessage = document.getElementById("modal-error-message"); // New: Error message div in modal
 
     let selectedAppointmentId = null;
 
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".consult-btn").forEach(button => {
             button.addEventListener("click", (e) => {
                 selectedAppointmentId = e.target.getAttribute("data-id");
-                //modalPatientName.textContent = e.target.getAttribute("data-name");
                 openModal();
             });
         });
@@ -65,6 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function openModal() {
         symptomsInput.value = "";
         diagnosisInput.value = "";
+        if (modalErrorMessage) {
+            modalErrorMessage.textContent = ''; // Clear previous error messages
+            modalErrorMessage.style.display = 'none';
+        }
         modal.style.display = "block";
     }
 
@@ -79,7 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const diagnosis = diagnosisInput.value;
 
         if (!symptoms || !diagnosis) {
-            alert("Please fill out all fields.");
+            if (modalErrorMessage) {
+                modalErrorMessage.textContent = "Please fill out all fields.";
+                modalErrorMessage.style.display = 'block';
+            }
             return;
         }
 
@@ -96,15 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
             if (response.ok) {
-                alert("Diagnosis saved successfully.");
+                alert("Diagnosis saved successfully."); // Keeping alert for success, can be improved later
                 modal.style.display = "none";
                 fetchAppointments(); // Refresh table
             } else {
-                alert(result.error || "Failed to save diagnosis.");
+                if (modalErrorMessage) {
+                    modalErrorMessage.textContent = result.error || "Failed to save diagnosis.";
+                    modalErrorMessage.style.display = 'block';
+                }
             }
         } catch (error) {
             console.error("Error saving diagnosis:", error);
-            alert("Unable to save diagnosis. Please try again later.");
+            if (modalErrorMessage) {
+                modalErrorMessage.textContent = "Unable to save diagnosis. Please try again later.";
+                modalErrorMessage.style.display = 'block';
+            }
         }
     });
 

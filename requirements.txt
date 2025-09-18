@@ -1,0 +1,6 @@
+Flask
+gradio_client
+transformers
+psycopg2-binary
+python-dotenv
+Werkzeug

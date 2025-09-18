@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booked Appointments</title>
+{% extends "base.html" %}
+
+{% block title %}View Appointments - Health Guard{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/viewbookings.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="container">
-        <h1>My Appointments</h1>
+        <h1>Your Booked Appointments</h1>
+
         {% if appointments %}
             <table>
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Time</th>
-                        <th>Doctor Name</th>
-                        <th>Speciality</th>
+                        <th>Doctor</th>
+                        <th>Specialization</th>
                         <th>Hospital</th>
                     </tr>
                 </thead>
@@ -33,8 +34,7 @@
                 </tbody>
             </table>
         {% else %}
-            <p>No appointments booked yet.</p>
+            <p style="text-align: center; margin-top: 20px; font-size: 1.2em; color: var(--gray-7);">No appointments booked yet.</p>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

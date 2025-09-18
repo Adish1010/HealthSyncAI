@@ -4,10 +4,14 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const role = document.getElementById('role').value;
+    const errorMessageDiv = document.getElementById('error-message');
+
+    // Clear previous error messages
+    errorMessageDiv.textContent = '';
 
     // Simple validation
     if (email === "" || password === "" || role === "") {
-        alert("Please fill in all fields.");
+        errorMessageDiv.textContent = "Please fill in all fields.";
         return;
     }
 
@@ -27,11 +31,11 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             window.location.href = result.redirect_url; // Redirect based on role
         } else {
             // Handle failed login
-            const error = await response.text();
-            alert(`Login failed: ${error}`);
+            const errorData = await response.json();
+            errorMessageDiv.textContent = `Login failed: ${errorData.error || response.statusText}`;
         }
     } catch (error) {
         console.error('Error during login:', error);
-        alert('An error occurred during login. Please try again later.');
+        errorMessageDiv.textContent = 'An error occurred during login. Please try again later.';
     }
 });

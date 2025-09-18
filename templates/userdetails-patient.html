@@ -1,77 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Details - AI Health Chatbot</title>
-    
+{% extends "base.html" %}
+
+{% block title %}Patient Details - Health Guard{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userdetails.css') }}">
-</head>
-<body>
+{% endblock %}
 
-    <!-- Header Section -->
-    <header>
-        <h1>AI Health Chatbot</h1>
-    </header>
+{% block content %}
+    <div class="form-container">
+        <h2>Patient Details</h2>
+        <form id="patient-details-form">
+            <input type="hidden" id="user-email" value="{{ session.get('email') }}">
 
-    <!-- Main Content Section -->
-    <main>
-        <div class="form-container">
-            <h2>Patient Details</h2>
-            <form id="patient-details-form" method="POST" action="/userdetails-patient">
-                <div class="input-group">
-                    <label for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full_name" required>
-                </div>
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="age">Age</label>
-                    <input type="number" id="age" name="age" required min="10" max="120">
-                    <small id="age-error" style="color:red; display:none;">Please enter a valid age between 10 and 120.</small>
-                </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender" required>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
 
-                <div class="input-group">
-                    <label for="contact">Contact Number</label>
-                    <input type="text" id="contact" name="contact" required>
-                </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
 
-                <div class="input-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" required>
-                </div>
-                <input type="hidden" name="email" value="{{ session.get('email', '') }}">
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
 
-                <button type="submit" id="submit-btn">Submit</button>
-            </form>
-        </div>
-    </main>
+            <button type="submit" id="submit-btn">Submit</button>
+            <div id="message-display" class="message" style="display: none;"></div>
+        </form>
+    </div>
+{% endblock %}
 
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/userdetailsscript.js') }}"></script>
-    <script>
-        // Client-side validation for age
-        document.getElementById('patient-details-form').addEventListener('submit', function(event) {
-            const age = document.getElementById('age').value;
-            const ageError = document.getElementById('age-error');
-            
-            // Age validation: check if it's a valid number between 0 and 120
-            if (age < 0 || age > 120 || isNaN(age)) {
-                event.preventDefault();  // Prevent form submission
-                ageError.style.display = 'inline';  // Show the error message
-            } else {
-                ageError.style.display = 'none';  // Hide the error message if age is valid
-            }
-        });
-    </script>
-   
-
-</body>
-</html>
+{% endblock %}

@@ -1,56 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Health Guard{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/GPTsignin.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="signup-box">
         <p>Sign Up</p>
-        <form>
-            <div class="user-box">
-                <input required name="name" type="text">
-                <label>Full Name</label>
+        <form id="signup-form">
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
-            <div class="user-box">
-                <input required name="email" type="email">
-                <label>Email</label>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
-            <div class="user-box">
-                <input required name="password" type="password">
-                <label>Password</label>
+            <div class="input-group">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
             </div>
-            <div class="user-box">
-                <input required name="confirm-password" type="password">
-                <label>Confirm Password</label>
-            </div>
-            <div class="role-box">
-                <label for="role">Select Role:</label>
+            <div class="input-group">
                 <select id="role" name="role" required>
-                    <option value="" disabled selected>Choose a role</option>
+                    <option value="">Select Role</option>
                     <option value="patient">Patient</option>
                     <option value="doctor">Doctor</option>
                 </select>
             </div>
-            <!-- <a href="../login/GPTlogin.html" id="register-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Register
-            </a> -->
-            <button type="submit" id="register-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Register
-            </button>
+            <button type="submit" class="btn">Register</button>
+            <div id="error-message" class="error-message"></div>
+            <div class="bottom-text">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
         </form>
-        <p>Already have an account? <a href="{{ url_for('login') }}" class="a75">Log in!</a></p>
     </div>
+{% endblock %}
+
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/signinscript.js') }}"></script>
-</body>
-</html>
+{% endblock %}

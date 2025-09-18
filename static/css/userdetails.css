@@ -1,74 +1,108 @@
 /* Shared styles */
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-sans);
 }
 
 body {
-    background-color: #f7f7f8;
-    color: #343541;
+    background-color: var(--gray-1);
+    color: var(--gray-9);
 }
 
 header {
-    background-color: #343541;
-    color: #ffffff;
+    background-color: var(--indigo-8);
+    color: var(--gray-0);
     text-align: center;
-    padding: 20px;
+    padding: var(--size-5);
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: var(--font-size-6);
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    margin-bottom: var(--size-6);
+    font-size: var(--font-size-5);
 }
 
 .form-container {
     width: 100%;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    max-width: var(--size-14);
+    margin: var(--size-8) auto;
+    padding: var(--size-7);
+    background-color: var(--gray-0);
+    box-shadow: var(--shadow-2);
+    border-radius: var(--radius-2);
 }
 
-.input-group {
-    margin-bottom: 20px;
+.form-group {
+    margin-bottom: var(--size-5);
 }
 
-.input-group label {
+.form-group label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 1rem;
+    margin-bottom: var(--size-2);
+    font-size: var(--font-size-3);
+    color: var(--gray-7);
 }
 
-.input-group input,
-.input-group select {
+.form-group input,
+.form-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: var(--size-3);
+    border: 1px solid var(--gray-4);
+    border-radius: var(--radius-1);
+    font-size: var(--font-size-3);
+    color: var(--gray-9);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--indigo-8);
+    outline: none;
 }
 
 button {
     display: block;
     width: 100%;
-    padding: 12px;
-    background-color: #343541;
-    color: white;
-    font-size: 1.1rem;
+    padding: var(--size-4);
+    background-color: var(--indigo-8);
+    color: var(--gray-0);
+    font-size: var(--font-size-3);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-1);
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #5b5e71;
+    background-color: var(--indigo-7);
+}
+
+/* Message Display Styles */
+.message {
+    padding: var(--size-3);
+    margin-top: var(--size-4);
+    border-radius: var(--radius-2);
+    font-size: var(--font-size-2);
+    text-align: center;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: var(--green-1);
+    color: var(--green-8);
+    border: 1px solid var(--green-6);
+}
+
+.message.error {
+    background-color: var(--red-1);
+    color: var(--red-8);
+    border: 1px solid var(--red-6);
 }

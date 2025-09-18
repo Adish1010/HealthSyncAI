@@ -1,143 +1,136 @@
 /* Basic reset and font styling */
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
+    font-family: var(--font-sans);
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--gray-1);
     display: flex;
-  }
-  
-  /* Sidebar styling */
-  .sidebar {
-    width: 250px;
-    background-color: #2C3E50;
-    color: white;
-    padding: 20px;
+    color: var(--gray-9);
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: var(--size-15);
+    background-color: var(--gray-9);
+    color: var(--gray-0);
+    padding: var(--size-5);
     height: 100vh;
-  }
-  
-  .sidebar-header h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar .nav {
+}
+
+.sidebar-header h2 {
+    font-size: var(--font-size-5);
+    margin-bottom: var(--size-5);
+}
+
+.sidebar .nav {
     list-style-type: none;
-  }
-  
-  .sidebar .nav li {
-    margin: 15px 0;
-  }
-  
-  .sidebar .nav li a {
+}
+
+.sidebar .nav li {
+    margin: var(--size-4) 0;
+}
+
+.sidebar .nav li a {
     text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
-    padding: 10px 15px;
+    color: var(--gray-0);
+    font-size: var(--font-size-3);
+    padding: var(--size-3) var(--size-4);
     display: block;
     transition: background-color 0.3s;
-  }
-  
-  .sidebar .nav li a:hover {
-    background-color: #34495E;
-  }
-  
-  /* Main content styling */
-  .main-content {
+}
+
+.sidebar .nav li a:hover {
+    background-color: var(--gray-7);
+}
+
+/* Main content styling */
+.main-content {
     flex-grow: 1;
-    padding: 40px;
-  }
-  
-  .main-content h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .main-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  #appointments-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: var(--size-8);
+}
+
+.main-content h1 {
+    font-size: var(--font-size-7);
+    margin-bottom: var(--size-5);
+}
+
+.main-content h2 {
+    font-size: var(--font-size-5);
+    margin-bottom: var(--size-4);
+}
+
+#appointments-container {
+    background-color: var(--gray-0);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
+    padding: var(--size-5);
     overflow-x: auto;
-  }
-  
-  #appointments-table {
+}
+
+#appointments-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  #appointments-table th, #appointments-table td {
-    padding: 15px;
+}
+
+#appointments-table th, #appointments-table td {
+    padding: var(--size-4);
     text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  #appointments-table th {
-    background-color: #3498DB;
-    color: white;
+    border-bottom: 1px solid var(--gray-3);
+}
+
+#appointments-table th {
+    background-color: var(--indigo-8);
+    color: var(--gray-0);
     text-transform: uppercase;
-  }
-  
-  #appointments-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  #appointments-table td {
-    font-size: 1rem;
-  }
-  
-  .appointment-status {
+}
+
+#appointments-table tr:nth-child(even) {
+    background-color: var(--gray-1);
+}
+
+#appointments-table td {
+    font-size: var(--font-size-3);
+}
+
+.appointment-status {
     font-weight: bold;
     text-transform: capitalize;
-    color: #3498DB;
-  }
-  
-  .appointment-status.completed {
-    color: #27AE60;
-  }
-  
-  .appointment-status.pending {
-    color: #E74C3C;
-  }
-  
-  .action-btn {
-    padding: 8px 15px;
+    color: var(--indigo-8);
+}
+
+.appointment-status.completed {
+    color: var(--green-7);
+}
+
+.appointment-status.pending {
+    color: var(--red-7);
+}
+
+.consult-btn {
+    padding: var(--size-2) var(--size-3);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-1);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: var(--font-size-2);
     transition: background-color 0.3s;
-  }
-  
-  .action-btn.view-details {
-    background-color: #3498DB;
-    color: white;
-  }
-  
-  .action-btn.view-details:hover {
-    background-color: #2980B9;
-  }
-  
-  .action-btn.complete-appointment {
-    background-color: #27AE60;
-    color: white;
-  }
-  
-  .action-btn.complete-appointment:hover {
-    background-color: #1E8449;
-  }
-  
-  /* Modal styling for Patient Details */
-  .modal {
+    background-color: var(--indigo-6);
+    color: var(--gray-0);
+}
+
+.consult-btn:hover {
+    background-color: var(--indigo-7);
+}
+
+/* Modal styling for Patient Details */
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -146,63 +139,137 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
+    overflow: auto;
+}
+
+.modal-content {
     position: relative;
-    margin: 10% auto;
-    background-color: white;
-    padding: 20px;
-    width: 50%;
-    border-radius: 8px;
-  }
-  
-  .close-btn {
+    margin: var(--size-10) auto;
+    background-color: var(--gray-0);
+    padding: var(--size-5);
+    width: 80%;
+    max-width: var(--size-14);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-3);
+}
+
+.modal-content h3 {
+    font-size: var(--font-size-4);
+    margin-bottom: var(--size-4);
+    color: var(--gray-9);
+}
+
+.close-btn {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 2rem;
+    top: var(--size-3);
+    right: var(--size-5);
+    font-size: var(--font-size-6);
+    color: var(--gray-7);
     cursor: pointer;
-  }
-  
-  /* Styling for the diagnosis and symptoms input */
-  textarea {
+}
+
+.close-btn:hover {
+    color: var(--gray-9);
+}
+
+/* Styling for the diagnosis and symptoms input */
+textarea {
     width: 100%;
-    height: 100px;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    resize: none;
-  }
-  
-  button {
-    background-color: #2C3E50;
-    color: white;
+    min-height: var(--size-10);
+    margin: var(--size-3) 0;
+    padding: var(--size-3);
+    border-radius: var(--radius-1);
+    border: 1px solid var(--gray-4);
+    resize: vertical;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-2);
+    color: var(--gray-9);
+}
+
+textarea:focus {
+    border-color: var(--indigo-8);
+    outline: none;
+}
+
+#save-diagnosis-btn {
+    background-color: var(--indigo-8);
+    color: var(--gray-0);
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: var(--size-3) var(--size-4);
+    border-radius: var(--radius-1);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: var(--font-size-3);
     transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #34495E;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
+    width: auto; /* Override general button width */
+    margin-top: var(--size-4);
+}
+
+#save-diagnosis-btn:hover {
+    background-color: var(--indigo-7);
+}
+
+/* Message Display within Modal */
+#modal-error-message {
+    color: var(--red-8);
+    font-size: var(--font-size-2);
+    margin-top: var(--size-3);
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        width: var(--size-14);
+        padding: var(--size-4);
     }
-  
+
+    .sidebar-header h2 {
+        font-size: var(--font-size-4);
+    }
+
+    .sidebar .nav li a {
+        font-size: var(--font-size-2);
+        padding: var(--size-2) var(--size-3);
+    }
+
     .main-content {
-        padding: 20px;
+        padding: var(--size-5);
     }
-  
+
+    .main-content h1 {
+        font-size: var(--font-size-6);
+    }
+
+    .main-content h2 {
+        font-size: var(--font-size-4);
+    }
+
     #appointments-table th, #appointments-table td {
-        padding: 10px;
+        padding: var(--size-3);
+        font-size: var(--font-size-2);
     }
-  }
+
+    .modal-content {
+        width: 95%;
+        margin: var(--size-5) auto;
+        padding: var(--size-4);
+    }
+
+    .close-btn {
+        font-size: var(--font-size-5);
+        top: var(--size-2);
+        right: var(--size-3);
+    }
+
+    textarea {
+        min-height: var(--size-8);
+    }
+
+    #save-diagnosis-btn {
+        padding: var(--size-2) var(--size-3);
+        font-size: var(--font-size-2);
+        margin-top: var(--size-3);
+    }
+}
   

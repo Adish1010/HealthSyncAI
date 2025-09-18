@@ -3,26 +3,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.querySelector('input[name="password"]');
     const confirmPasswordInput = document.querySelector('input[name="confirm-password"]');
     const emailInput = document.querySelector('input[name="email"]');
-    const roleSelect = document.querySelector('select[name="role"]'); // Assuming there's a role select field
+    const roleSelect = document.querySelector('select[name="role"]');
+    const errorMessageDiv = document.getElementById('error-message'); // Get the dedicated error message div
 
-    const errorMessage = document.createElement('p');
-    errorMessage.style.color = 'red';
-    errorMessage.style.fontSize = '14px';
-    errorMessage.style.marginTop = '5px';
-    errorMessage.style.display = 'none'; // Initially hidden
-    confirmPasswordInput.parentNode.appendChild(errorMessage);
+    // Initially hide the error message div
+    if (errorMessageDiv) {
+        errorMessageDiv.style.display = 'none';
+    }
 
     form.addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent form from submitting by default
+        event.preventDefault();
+
+        // Clear previous error messages
+        if (errorMessageDiv) {
+            errorMessageDiv.textContent = '';
+            errorMessageDiv.style.display = 'none';
+        }
+
+        // Client-side validation for empty fields
+        if (!emailInput.value || !passwordInput.value || !confirmPasswordInput.value || !roleSelect.value) {
+            if (errorMessageDiv) {
+                errorMessageDiv.textContent = "Please fill in all fields.";
+                errorMessageDiv.style.display = 'block';
+            }
+            return;
+        }
 
         // Validate passwords match
         if (passwordInput.value !== confirmPasswordInput.value) {
-            errorMessage.textContent = "Passwords do not match!";
-            errorMessage.style.display = 'block'; // Show error message
-            return; // Stop the form submission
+            if (errorMessageDiv) {
+                errorMessageDiv.textContent = "Passwords do not match!";
+                errorMessageDiv.style.display = 'block';
+            }
+            return;
         }
-
-        errorMessage.style.display = 'none'; // Hide error message if validation passes
 
         const userData = {
             email: emailInput.value,
@@ -31,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            // Send data to the backend
             const response = await fetch('/register', {
                 method: 'POST',
                 headers: {
@@ -41,29 +54,38 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (response.ok) {
-                // Redirect based on role
                 if (roleSelect.value === 'patient') {
                     window.location.href = '/userdetails-patient';
                 } else if (roleSelect.value === 'doctor') {
                     window.location.href = '/userdetails-doctor';
                 }
             } else {
-                const errorText = await response.text();
-                alert(`Registration failed: ${errorText}`);
+                const errorData = await response.json();
+                if (errorMessageDiv) {
+                    errorMessageDiv.textContent = `Registration failed: ${errorData.error || response.statusText}`;
+                    errorMessageDiv.style.display = 'block';
+                }
             }
         } catch (error) {
             console.error('Error during registration:', error);
-            alert('An error occurred. Please try again later.');
+            if (errorMessageDiv) {
+                errorMessageDiv.textContent = 'An error occurred during registration. Please try again later.';
+                errorMessageDiv.style.display = 'block';
+            }
         }
     });
 
-    // Optional: Real-time confirm password validation
+    // Real-time confirm password validation
     confirmPasswordInput.addEventListener('input', function () {
         if (passwordInput.value !== confirmPasswordInput.value) {
-            errorMessage.textContent = "Passwords do not match!";
-            errorMessage.style.display = 'block';
+            if (errorMessageDiv) {
+                errorMessageDiv.textContent = "Passwords do not match!";
+                errorMessageDiv.style.display = 'block';
+            }
         } else {
-            errorMessage.style.display = 'none';
+            if (errorMessageDiv) {
+                errorMessageDiv.style.display = 'none';
+            }
         }
     });
 });

@@ -1,35 +1,45 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    max-width: var(--size-15);
+    margin: var(--size-5) auto;
+    padding: var(--size-5);
+    font-family: var(--font-sans);
+    background-color: var(--gray-0);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--gray-9);
+    font-size: var(--font-size-6);
+    margin-bottom: var(--size-5);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: var(--size-5);
 }
 
 thead {
-    background-color: #f4f4f4;
+    background-color: var(--gray-2);
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid var(--gray-4);
+    padding: var(--size-3);
     text-align: center;
+    font-size: var(--font-size-3);
+    color: var(--gray-9);
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--gray-1);
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--gray-2);
 }
